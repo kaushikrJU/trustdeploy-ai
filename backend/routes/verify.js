@@ -58,8 +58,15 @@ router.post("/verify", async (req, res) => {
         const isSafe =
             generatedHash === blockchainHash;
 
-        const aiResponse =
-            analyzeResult(isSafe);
+       const aiResponse =
+    analyzeResult({
+        isSafe,
+        commitId,
+        generatedHash,
+        blockchainHash,
+        timestamp:
+            new Date().toISOString()
+    });
 
         res.json({
             generatedHash,
