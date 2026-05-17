@@ -160,6 +160,9 @@ export default function App() {
   const [loadingStore, setLoadingStore] =
     useState(false);
 
+  const [storeMessage, setStoreMessage] =
+  useState("");
+
   const [
     loadingVerify,
     setLoadingVerify,
@@ -167,6 +170,7 @@ export default function App() {
 
   const storeHash = async () => {
     setLoadingStore(true);
+    setStoreMessage("");
 
     try {
       await fetch(`${API_URL}/store`, {
@@ -183,9 +187,17 @@ export default function App() {
         }),
       });
 
-      alert("Hash Stored Successfully");
+      // alert("Hash Stored Successfully");
+
+      setStoreMessage(
+        "✅ Hash stored successfully on blockchain"
+      );
+
     } catch (error) {
-      alert("Backend Not Running");
+      // alert("Backend Not Running");
+      setStoreMessage(
+        "❌ Backend not running."
+      );
     }
 
     setLoadingStore(false);
@@ -708,6 +720,25 @@ export default function App() {
                 </button>
               </div>
 
+              {storeMessage && (
+                <div
+                  style={{
+                    marginTop: "18px",
+                    padding: "14px",
+                    borderRadius: "14px",
+                    background:
+                      "rgba(20,184,166,0.12)",
+                    border:
+                      "1px solid rgba(20,184,166,0.3)",
+                    color: "#2dd4bf",
+                    fontWeight: "600",
+                    textAlign: "center",
+                  }}
+                >
+                  {storeMessage}
+                </div>
+              )}
+
               {/* RESULT */}
               {result && (
                 <div
@@ -735,13 +766,19 @@ export default function App() {
                       color:
                         result.status ===
                         "SAFE"
-                          ? V.safe
-                          : V.danger,
+                          ? "#22c55e"
+                          : "#ef4444",
+                      fontSize: "34px",
+                      fontWeight: "900",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      marginBottom: "14px",
                     }}
                   >
-                    {
-                      result.status
-                    }
+                    {result.status === "SAFE"
+                      ? "🟢 SAFE"
+                      : "🔴 TAMPERED"}
                   </h2>
 
                   <p>
@@ -757,9 +794,21 @@ export default function App() {
                     <strong>
                       Risk Level:
                     </strong>{" "}
-                    {
-                      result.riskLevel
-                    }
+                    <span
+                      style={{
+                        color:
+                          result.riskLevel ===
+                          "LOW"
+                            ? "#22c55e"
+                            : result.riskLevel ===
+                              "MEDIUM"
+                            ? "#f59e0b"
+                            : "#ef4444",
+                        fontWeight: "800",
+                      }}
+                    >
+                      {result.riskLevel}
+                    </span>
                   </p>
 
                   <p>
