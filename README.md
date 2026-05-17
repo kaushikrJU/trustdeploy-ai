@@ -1,6 +1,10 @@
-# TrustDeploy AI
+# 🛡️ TrustDeploy AI
 
-AI-powered DevSecOps platform for detecting software supply chain attacks using blockchain-based deployment verification and AI trust analysis.
+### Secure software deployments with blockchain trust
+
+AI-powered DevSecOps platform for detecting **software supply chain attacks** using **blockchain-based deployment verification, SHA256 integrity validation, and intelligent trust analysis**.
+
+> **Trust. Verify. Deploy.**
 
 ---
 
@@ -15,6 +19,51 @@ The system combines:
 - AI-powered risk analysis
 
 to detect possible software supply chain attacks.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+Frontend (React + Vite)
+            ↓
+Backend API (Node.js + Express)
+            ↓
+Blockchain Verification Layer
+   (Web3.js + Ganache + Smart Contract)
+            ↓
+AI Trust Analysis Engine
+```
+
+---
+
+## 🔄 Demo Flow
+
+### Trusted Deployment
+
+1. Store approved deployment hash
+2. Verify deployment
+3. Result:
+
+```text
+🟢 SAFE
+LOW RISK
+```
+
+---
+
+### Tampered Deployment
+
+1. Modify deployment data
+2. Verify again
+3. Result:
+
+```text
+🔴 TAMPERED
+HIGH RISK
+```
+
+TrustDeploy AI instantly detects deployment integrity violations.
 
 ---
 
@@ -242,11 +291,23 @@ POST /api/verify
 
 ## 👨‍💻 Team
 
-TrustDeploy AI Team  
-Hackathon Project 2026
+### Jishnu
+Blockchain & Smart Contract Integration
+
+### Kaushik
+Backend Engineering
+
+### Nischay
+Frontend Engineering
 
 ---
 
 ## 📜 License
 
 This project is built for educational and hackathon purposes.
+
+---
+
+## 🏆 Built For
+
+**IBM Bob Hackathon 2026**
